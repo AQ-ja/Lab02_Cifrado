@@ -6,28 +6,28 @@ def DecimalBits(txt):
     return(str(res))
 
 
-def BitsDecimal(bits):
-    binary_int = int(bits, 2)
-    byte_number = binary_int.bit_length() + 7 // 8
+def bitsToString(bits):
+    bitsInt = int(bits, 2)
+    bitNum = bitsInt.bit_length() + 7 // 8
 
-    binary_array = binary_int.to_bytes(byte_number, "big")
-    ascii_text = binary_array.decode()
-    return(ascii_text)
+    bitArray = bitsInt.to_bytes(bitNum, "big")
+    stringBit = bitArray.decode()
+    return(stringBit)
 
 
 def StrToBase64(txt):
-    message_bytes = txt.encode('ascii')
-    base64_bytes = base64.b64encode(message_bytes)
-    base64_message = base64_bytes.decode('ascii')
-    return(base64_message)
+    strBit = txt.encode('ascii')
+    strBase = base64.b64encode(strBit)
+    base64Convert = strBase.decode('ascii')
+    return(base64Convert)
 
 
 def Base64ToString():
-    base64_message = input("ingrese:\n")
-    base64_bytes = base64_message.encode('ascii')
-    message_bytes = base64.b64decode(base64_bytes)
-    message = message_bytes.decode('ascii')
-    return(message)
+    mensaje64 = input("Ingrese la cadena de base64 a convertir a texto:\n")
+    mssBit = mensaje64.encode('ascii')
+    mssBytes = base64.b64decode(mssBit)
+    strMss = mssBytes.decode('ascii')
+    return(strMss)
 
 
 def XOR():
@@ -45,8 +45,8 @@ def XOR():
 
         for y in range(len(listS1)):
             result.append((int(listS1[y]) ^ int(listS2[y])))
-
-        print(" ".join([str(_) for _ in result]))
+        res = " ".join([str(_) for _ in result])
+        return res
     else:
         print(
             "Las dos cadenas de caracteres deben de contener la misma cantidad de elementos")
@@ -58,18 +58,24 @@ try:
     op = int(input())
     if op > 0 and op < 6:
         if op == 1:
+            print("Ha seleccionado la opcion 1\n")
             textoPlano = input(("Ingrese el texto a pasar a bits: \n"))
             print("El texto plano a bits : "+DecimalBits(textoPlano))
         if op == 2:
+            print("Ha seleccionado la opcion 2\n")
             bitsText = input(("Ingrese la cadena de bits a pasar a texto:\n"))
-            print(BitsDecimal(bitsText))
+            print(bitsToString(bitsText))
         if op == 3:
+            print("Ha seleccionado la opcion 3\n")
             tex = input("Ingrese el texto a convertir a base64:\n")
-            print(StrToBase64(tex))
+            print("El texto convertido a base 64 es:\n", StrToBase64(tex))
         if op == 4:
-            print(Base64ToString())
+            print("Ha seleccionado la opcion 4\n")
+            print("El texto convertido de base64 a caracteres es:\n",
+                  Base64ToString())
         if op == 5:
-            XOR()
+            print("Ha seleccionado la opcion 5\n")
+            print("La operción XOR entre dos cadenas de bits es:\n", XOR())
 
     else:
         print("Gracias por usar el programa")
