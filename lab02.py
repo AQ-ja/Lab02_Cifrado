@@ -157,9 +157,9 @@ try:
             for y in range(len(listS1)):
                 result.append((int(listS1[y]) ^ int(listY[y])))
                 res = " ".join([str(_) for _ in result])
-            print(listS1)
-            print(listY)
-            print(result)
+            # print(listS1)
+            # print(listY)
+            # print(result)
             # Bits
             # Histograma
 
@@ -181,11 +181,11 @@ try:
 
             # intervalos = ['0', '1']
 
-            print(listS1)
-            print(listY)
-            print(result)
-            print(resultBigrams)
-            print(resultTri)
+            # print(listS1)
+            # print(listY)
+            # print(result)
+            # print(resultBigrams)
+            # print(resultTri)
 
             intervalosHistograma = ['0', '1']
             n, bins, patches = plt.hist(result)
