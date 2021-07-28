@@ -108,6 +108,25 @@ try:
             plt.ylabel("Frecuencia")
             plt.title("Histograma")
             plt.show()
+        if op == 7:
+            print("Ha seleccionado la opcion 7\n")
+
+            s1 = input("Ingrese la cadena de bits\n")
+            listS1 = []
+
+            for i in range(len(s1)):
+                if i % 2 == 0:
+
+                    n = 2
+                    end = i+n
+                    listS1.append(s1[i:end])
+
+            intervalos = ['00', '01', '10', '11']
+            n, bins, patches = plt.hist(listS1)
+            plt.xlabel("Valores")
+            plt.ylabel("Frecuencia")
+            plt.title("Histograma")
+            plt.show()
 
     else:
         print("Gracias por usar el programa")
