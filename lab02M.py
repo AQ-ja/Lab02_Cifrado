@@ -64,7 +64,7 @@ try:
         if op == 2:
             print("Ha seleccionado la opcion 2\n")
             bitsText = input(("Ingrese la cadena de bits a pasar a texto:\n"))
-            print(bitsToString(bitsText))
+            print("El resultado es:\n", bitsToString(bitsText))
         if op == 3:
             print("Ha seleccionado la opcion 3\n")
             tex = input("Ingrese el texto a convertir a base64:\n")
