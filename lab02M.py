@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from pygal import Histogram
 from pygal.style import Style
 import numpy as np
+import random
 
 
 def DecimalBits(txt):
@@ -57,7 +58,7 @@ def XOR():
 
 
 print("Bienvenido al Laboratorio No.2\n Que desea hacer: \n")
-print(" 1. Convertir una cadena de caracteres a bits\n 2. Convertir una cadena de bits a caracteres\n 3. Convertir una cadena de caracteres en Base 64\n 4. Convertir una cadena de Base64 a caracteres\n 5. Operacion XOR entre dos cadenas de bits\n 6. Crear histograma de una cadena de bits\n 7. Crear histograma (bigrama)\n 8. Crear histograma (trigrama)\n 0. Salir\n")
+print(" 1. Convertir una cadena de caracteres a bits\n 2. Convertir una cadena de bits a caracteres\n 3. Convertir una cadena de caracteres en Base 64\n 4. Convertir una cadena de Base64 a caracteres\n 5. Operacion XOR entre dos cadenas de bits\n 6. Crear histograma de una cadena de bits\n 7. Crear histograma (bigrama)\n 8. Crear histograma (trigrama)\n 9. Crear histogramas de dos cadenas operadas por XOR\n 0. Salir\n")
 try:
     op = int(input())
     if op > 0 and op < 10:
@@ -88,26 +89,13 @@ try:
             for i in s1:
                 listS1.append(i)
 
-            # for x in range(len(listS1)):
-            total0 = 0
-            total1 = 0
-            for x in range(len(listS1)):
-                if "0" in listS1[x]:
-                    total0 += 1
-                if "1" in listS1[x]:
-                    total1 += 1
-
-            if "0" in listS1[0]:
-                print("SI")
-
-            for i in range(0, len(listS1)):
-                listS1[i] = int(listS1[i])
-            intervalos = [0, 1]
+            intervalos = ['0', '1']
             n, bins, patches = plt.hist(listS1)
             plt.xlabel("Valores")
             plt.ylabel("Frecuencia")
             plt.title("Histograma")
             plt.show()
+
         if op == 7:
             print("Ha seleccionado la opcion 7\n")
 
@@ -145,6 +133,80 @@ try:
             plt.xlabel("Valores")
             plt.ylabel("Frecuencia")
             plt.title("Histograma")
+            plt.show()
+
+        if op == 9:
+            print("Ha seleccionado la opcion 9\n")
+
+            listS1 = []
+            listBigrama = []
+            listTri = []
+            result = []
+            resultBigrams = []
+            resultTri = []
+
+            s1 = input("Ingrese la cadena de bits\n")
+            listY = []
+
+            for i in range(len(s1)):
+                listY.append(random.randint(0, 1))
+
+            for i in s1:
+                listS1.append(i)
+
+            for y in range(len(listS1)):
+                result.append((int(listS1[y]) ^ int(listY[y])))
+                res = " ".join([str(_) for _ in result])
+            print(listS1)
+            print(listY)
+            print(result)
+            # Bits
+            # Histograma
+
+            # Bigrama
+            for i in range(len(s1)):
+                if i % 2 == 0:
+
+                    n = 2
+                    end = i+n
+                    resultBigrams.append(s1[i:end])
+            # Trigrama
+            for i in range(len(s1)):
+
+                if i % 3 == 0:
+
+                    n = 3
+                    end = i+n
+                    resultTri.append(s1[i:end])
+
+            # intervalos = ['0', '1']
+
+            print(listS1)
+            print(listY)
+            print(result)
+            print(resultBigrams)
+            print(resultTri)
+
+            intervalosHistograma = ['0', '1']
+            n, bins, patches = plt.hist(result)
+            plt.xlabel("Valores")
+            plt.ylabel("Frecuencia")
+            plt.title("Histograma")
+            plt.show()
+
+            intervalosBig = ['00', '01', '10', '11']
+            n, bins, patches = plt.hist(resultBigrams)
+            plt.xlabel("Valores")
+            plt.ylabel("Frecuencia")
+            plt.title("Histograma bigrama")
+            plt.show()
+
+            intervalosTrig = ['000', '001', '010',
+                              '011', '100', '101', '110', '111']
+            n, bins, patches = plt.hist(resultTri)
+            plt.xlabel("Valores")
+            plt.ylabel("Frecuencia")
+            plt.title("Histograma Trigrama")
             plt.show()
 
     else:
