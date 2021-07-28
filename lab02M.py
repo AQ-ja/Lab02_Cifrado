@@ -57,7 +57,7 @@ def XOR():
 
 
 print("Bienvenido al Laboratorio No.2\n Que desea hacer: \n")
-print(" 1. Convertir una cadena de caracteres a bits\n 2. Convertir una cadena de bits a caracteres\n 3. Convertir una cadena de caracteres en Base 64\n 4. Convertir una cadena de Base64 a caracteres\n 5. Operacion XOR entre dos cadenas de bits\n 6. Crear histograma de una cadena de bits 0. Salir\n")
+print(" 1. Convertir una cadena de caracteres a bits\n 2. Convertir una cadena de bits a caracteres\n 3. Convertir una cadena de caracteres en Base 64\n 4. Convertir una cadena de Base64 a caracteres\n 5. Operacion XOR entre dos cadenas de bits\n 6. Crear histograma de una cadena de bits\n 7. Crear histograma (bigrama)\n 8. Crear histograma (trigrama)\n 0. Salir\n")
 try:
     op = int(input())
     if op > 0 and op < 10:
@@ -122,6 +122,25 @@ try:
                     listS1.append(s1[i:end])
 
             intervalos = ['00', '01', '10', '11']
+            n, bins, patches = plt.hist(listS1)
+            plt.xlabel("Valores")
+            plt.ylabel("Frecuencia")
+            plt.title("Histograma")
+            plt.show()
+        if op == 8:
+            print("Ha seleccionado la opcion 8\n")
+
+            s1 = input("Ingrese la cadena de bits\n")
+            listS1 = []
+
+            for i in range(len(s1)):
+                if i % 3 == 0:
+
+                    n = 3
+                    end = i+n
+                    listS1.append(s1[i:end])
+            intervalos = ['000', '001', '010',
+                          '011', '100', '101', '110', '111']
             n, bins, patches = plt.hist(listS1)
             plt.xlabel("Valores")
             plt.ylabel("Frecuencia")
